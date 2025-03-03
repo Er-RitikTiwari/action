@@ -35,7 +35,9 @@ jobs:
             - name:  running deploy file
               run: |
                 cd k8s
-                kubectl apply -f k8s.yml
+                kubectl apply -f namespace.yml
+                kubectl apply -f deployment.yml
+                kubectl apply -f service.yml
 
             - name:  getting the external ip 
               run: echo " public ip $(kubectl get svc -n notes-space)"
