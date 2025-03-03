@@ -1,5 +1,0 @@
-kind: Namespace
-appVersion: v1
-metadata:
-  name: notes-space
-
