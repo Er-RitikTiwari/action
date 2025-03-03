@@ -24,8 +24,7 @@ jobs:
                 tags: ritikkkk/notes-image:latest
 
             - name:  Azure login
-              run: az login --tenant add67cd2-c8b2-416c-b171-b61b22be92f4
-
+              run: az login --tenant ${{ secrets.TENANT_ID }}
             - name:  connect cluster
               run: az aks get-credentials --resource-group trial-aks --name ritik-cluster --overwrite-existing
 
