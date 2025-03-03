@@ -1,0 +1,22 @@
+name: aks_cluster
+on: push
+jobs:
+    cluster:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code
+              uses: actions/checkout@v4
+
+            - name: Azure login
+              run: az login --tenant add67cd2-c8b2-416c-b171-b61b22be92f4
+
+            - name: connect cluster
+              run: az aks get-credentials --resource-group trial-aks --name ritik-cluster --overwrite-existing
+
+            - name: running deploy file
+              run: kubectl apply -f k8s.yml
+
+            - name: getting the external ip 
+              run: echo " public ip $(kubectl get svc -n notes-space)"
+            
+            
