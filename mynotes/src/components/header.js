@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <div className="app-header">
-            <h1>My Note application</h1>
+            <h1>My application</h1>
         </div>
     )
 }

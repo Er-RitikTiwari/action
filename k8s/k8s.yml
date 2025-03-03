@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: notes-app
-        image: ritikkkk/notes-image:latest
+        image: ritikkkk/notes-image
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
