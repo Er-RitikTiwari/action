@@ -7,16 +7,18 @@ jobs:
             - name: Get code
               uses: actions/checkout@v4
 
-            - name: Azure login
+            - name:  Azure login
               run: az login --tenant add67cd2-c8b2-416c-b171-b61b22be92f4
 
-            - name: connect cluster
+            - name:  connect cluster
               run: az aks get-credentials --resource-group trial-aks --name ritik-cluster --overwrite-existing
 
-            - name: running deploy file
-              run: kubectl apply -f k8s.yml
+            - name:  running deploy file
+              run: |
+                cd k8s
+                kubectl apply -f k8s.yml
 
-            - name: getting the external ip 
+            - name:  getting the external ip 
               run: echo " public ip $(kubectl get svc -n notes-space)"
             
             
