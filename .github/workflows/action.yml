@@ -24,8 +24,8 @@ jobs:
             #     tags: ritikkkk/notes-image:latest
             - name: building image
               run: |
-                 docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/notes-image
-                 docker push ${{ secrets.DOCKERHUB_USERNAME }}/notes-image
+                 docker build -t ritikkkk/notes-image
+                 docker push ritikkkk/notes-image
                                          
             - name:  Azure login
               run: az login --tenant ${{ secrets.TENANT_ID }}
