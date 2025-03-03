@@ -13,20 +13,19 @@ jobs:
                 username: ${{ secrets.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            # - name: Set up Docker Buildx
-            #   # uses: docker/setup-buildx-action@v3
-            #   run: docker build -t notes-image .
+                      
+            # - name: Build and push multi-arch image
+            #   uses: docker/build-push-action@v6
+            #   with:
+            #     push: true
+            #     tags: ritikkkk/notes-image:latest 
             
-            - name: Build and push multi-arch image
-              uses: docker/build-push-action@v6
-              with:
-                push: true
-                tags: ritikkkk/notes-image:latest
-            # - name: building image
-            #   run: |
-            #      docker build -t ritikkkk/notes-image
-            #      docker push ritikkkk/notes-image
-                                         
+            - name: build image
+              run: docker build -t ritikkkk/notes-image:latest .
+            
+            - name: push image
+              run: docker push ritikkkk/notes-image:latest 
+                                                     
             - name:  Azure login
               run: az login --tenant ${{ secrets.TENANT_ID }}
             - name:  connect cluster
