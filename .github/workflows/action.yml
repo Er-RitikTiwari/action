@@ -21,10 +21,14 @@ jobs:
             #     tags: ritikkkk/notes-image:latest 
             
             - name: build image
-              run: docker build -t ritikkkk/notes-image:latest .
+              run: |
+                cd mynotes
+                docker build -t ritikkkk/notes-image:latest .
             
             - name: push image
-              run: docker push ritikkkk/notes-image:latest 
+              run: |
+                cd mynotes
+                docker push ritikkkk/notes-image:latest 
                                                      
             - name:  Azure login
               run: az login --tenant ${{ secrets.TENANT_ID }}
@@ -34,7 +38,6 @@ jobs:
             - name:  running deploy file
               run: |
                 cd k8s
-                kubectl rollout restart deployment notes-deployment -n notes-space
                 kubectl apply -f namespace.yml
                 kubectl apply -f deployment.yml
                 kubectl apply -f service.yml
